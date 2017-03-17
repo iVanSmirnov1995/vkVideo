@@ -10,9 +10,10 @@
 		D30B79BC1E7BD90400E9D688 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79BB1E7BD90400E9D688 /* main.m */; };
 		D30B79BF1E7BD90400E9D688 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79BE1E7BD90400E9D688 /* AppDelegate.m */; };
 		D30B79C21E7BD90400E9D688 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79C11E7BD90400E9D688 /* ViewController.m */; };
-		D30B79C51E7BD90400E9D688 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30B79C31E7BD90400E9D688 /* Main.storyboard */; };
 		D30B79C71E7BD90400E9D688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30B79C61E7BD90400E9D688 /* Assets.xcassets */; };
-		D30B79CA1E7BD90400E9D688 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30B79C81E7BD90400E9D688 /* LaunchScreen.storyboard */; };
+		D30B79D31E7BDA7900E9D688 /* ISLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79D21E7BDA7900E9D688 /* ISLoginController.m */; };
+		D30B79D61E7BE55800E9D688 /* ISAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79D51E7BE55800E9D688 /* ISAccessToken.m */; };
+		D30B79D91E7BE81A00E9D688 /* ISStartVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79D81E7BE81A00E9D688 /* ISStartVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,10 +23,14 @@
 		D30B79BE1E7BD90400E9D688 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D30B79C01E7BD90400E9D688 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D30B79C11E7BD90400E9D688 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		D30B79C41E7BD90400E9D688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D30B79C61E7BD90400E9D688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D30B79C91E7BD90400E9D688 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D30B79CB1E7BD90400E9D688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D30B79D11E7BDA7900E9D688 /* ISLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLoginController.h; sourceTree = "<group>"; };
+		D30B79D21E7BDA7900E9D688 /* ISLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLoginController.m; sourceTree = "<group>"; };
+		D30B79D41E7BE55800E9D688 /* ISAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAccessToken.h; sourceTree = "<group>"; };
+		D30B79D51E7BE55800E9D688 /* ISAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAccessToken.m; sourceTree = "<group>"; };
+		D30B79D71E7BE81A00E9D688 /* ISStartVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISStartVC.h; sourceTree = "<group>"; };
+		D30B79D81E7BE81A00E9D688 /* ISStartVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISStartVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +63,17 @@
 		D30B79B91E7BD90400E9D688 /* vkVideo */ = {
 			isa = PBXGroup;
 			children = (
+				D30B79D71E7BE81A00E9D688 /* ISStartVC.h */,
+				D30B79D81E7BE81A00E9D688 /* ISStartVC.m */,
+				D30B79D41E7BE55800E9D688 /* ISAccessToken.h */,
+				D30B79D51E7BE55800E9D688 /* ISAccessToken.m */,
+				D30B79D11E7BDA7900E9D688 /* ISLoginController.h */,
+				D30B79D21E7BDA7900E9D688 /* ISLoginController.m */,
 				D30B79BD1E7BD90400E9D688 /* AppDelegate.h */,
 				D30B79BE1E7BD90400E9D688 /* AppDelegate.m */,
 				D30B79C01E7BD90400E9D688 /* ViewController.h */,
 				D30B79C11E7BD90400E9D688 /* ViewController.m */,
-				D30B79C31E7BD90400E9D688 /* Main.storyboard */,
 				D30B79C61E7BD90400E9D688 /* Assets.xcassets */,
-				D30B79C81E7BD90400E9D688 /* LaunchScreen.storyboard */,
 				D30B79CB1E7BD90400E9D688 /* Info.plist */,
 				D30B79BA1E7BD90400E9D688 /* Supporting Files */,
 			);
@@ -138,9 +147,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D30B79CA1E7BD90400E9D688 /* LaunchScreen.storyboard in Resources */,
 				D30B79C71E7BD90400E9D688 /* Assets.xcassets in Resources */,
-				D30B79C51E7BD90400E9D688 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,31 +159,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D30B79C21E7BD90400E9D688 /* ViewController.m in Sources */,
+				D30B79D91E7BE81A00E9D688 /* ISStartVC.m in Sources */,
 				D30B79BF1E7BD90400E9D688 /* AppDelegate.m in Sources */,
+				D30B79D61E7BE55800E9D688 /* ISAccessToken.m in Sources */,
 				D30B79BC1E7BD90400E9D688 /* main.m in Sources */,
+				D30B79D31E7BDA7900E9D688 /* ISLoginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		D30B79C31E7BD90400E9D688 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D30B79C41E7BD90400E9D688 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D30B79C81E7BD90400E9D688 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D30B79C91E7BD90400E9D688 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D30B79CC1E7BD90400E9D688 /* Debug */ = {
@@ -219,7 +210,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -260,7 +251,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -273,6 +264,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HVBFE6784D;
 				INFOPLIST_FILE = vkVideo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = IS.com.vkVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -285,6 +277,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HVBFE6784D;
 				INFOPLIST_FILE = vkVideo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = IS.com.vkVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
