@@ -45,6 +45,7 @@
 
 #pragma mark-UITableViewDataSource
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return 40;
@@ -77,10 +78,6 @@
         if (!cell) {
             cell = [[ISTableViewVideoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
             
-           // UIImageView* iv=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test.jpg"]];
-            NSLog(@"%@",cell.videoImage);
-            cell.videoImage.image=[UIImage imageNamed:@"test.jpg"];
-            
         }
         
         
@@ -96,7 +93,40 @@
 #pragma mark-UITableViewDelegate
 
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    if (indexPath.row>0) {
+        
+        ISTableViewVideoCell* vCell=(ISTableViewVideoCell*)cell;
+        vCell.videoImage.image=[UIImage imageNamed:@"test.jpg"];
+        vCell.videoLable.text=@"котэ аспмриотльдлорпавпролодрпа";
+        vCell.timeVLable.text=@"01:45";
+        
+        UIFont* timeFont=[UIFont fontWithName:@"HelveticaNeue-UltraLightItalic" size:14];
+        vCell.timeVLable.font=timeFont;
+    }
+    
+    
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+     if (indexPath.row==0) {
+         
+       return 40;
+         
+     }
+    
+    if (indexPath.row>0) {
+        
+        return 60;
+        
+    }
+    
+    
+    return 40;
+}
 
 
 @end

@@ -11,5 +11,7 @@
 @interface ISTableViewVideoCell : UITableViewCell
 
 @property(strong,nonatomic)UIImageView* videoImage;
+@property(strong,nonatomic)UILabel* videoLable;
+@property(strong,nonatomic)UILabel* timeVLable;
 
 @end
