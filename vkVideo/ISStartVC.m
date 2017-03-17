@@ -8,8 +8,10 @@
 
 #import "ISStartVC.h"
 #import "ISLoginController.h"
+#import "ISTableSearchCell.h"
+#import "ISTableViewVideoCell.h"
 
-@interface ISStartVC ()
+@interface ISStartVC ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
 
@@ -25,7 +27,13 @@
         
     } ];
     
+    UITableView* tableView=[[UITableView alloc]
+                            initWithFrame:self.view.frame style:UITableViewStylePlain];
     
+    [self.view addSubview:tableView];
+    tableView.delegate=self;
+    tableView.dataSource=self;
+    tableView.autoresizingMask=UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
     
     
 }
@@ -35,14 +43,60 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark-UITableViewDataSource
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 40;
 }
-*/
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    static NSString* identifier=@"";
+    
+    if (indexPath.row==0) {
+        identifier=@"search";
+        
+        ISTableSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        
+        if (!cell) {
+            cell = [[ISTableSearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        
+        
+        
+        return cell;
+    }
+    
+    if (indexPath.row>0) {
+        
+        identifier=@"video";
+        
+        ISTableViewVideoCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        
+        if (!cell) {
+            cell = [[ISTableViewVideoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            
+           // UIImageView* iv=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"test.jpg"]];
+            NSLog(@"%@",cell.videoImage);
+            cell.videoImage.image=[UIImage imageNamed:@"test.jpg"];
+            
+        }
+        
+        
+        
+        return cell;
+    }
+
+    
+    return nil;
+}
+
+
+#pragma mark-UITableViewDelegate
+
+
+
+
 
 @end
