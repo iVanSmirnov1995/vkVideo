@@ -10,8 +10,13 @@
 #import "ISLoginController.h"
 #import "ISTableSearchCell.h"
 #import "ISTableViewVideoCell.h"
+#import "ISServerManager.h"
+#import "ISVkVideoModel.h"
 
-@interface ISStartVC ()<UITableViewDataSource,UITableViewDelegate>
+@interface ISStartVC ()<UITableViewDataSource,UITableViewDelegate,ISLoginDelegate>
+
+@property(strong,nonatomic)NSArray* videoAr;
+@property(strong,nonatomic)UITableView* tableViwe;
 
 @end
 
@@ -21,6 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     ISLoginController* vc=[[ISLoginController alloc]init];
+    vc.delegate=self;
     vc.modalPresentationStyle=UIModalPresentationPageSheet;
     vc.modalTransitionStyle=UIModalTransitionStyleCoverVertical;
     [self presentViewController:vc animated:YES completion:^{
@@ -34,6 +40,7 @@
     tableView.delegate=self;
     tableView.dataSource=self;
     tableView.autoresizingMask=UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin;
+    self.tableViwe=tableView;
     
     
 }
@@ -48,7 +55,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 40;
+    return self.videoAr.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -95,16 +102,29 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    ISVkVideoModel* video=self.videoAr[indexPath.row];
     
     if (indexPath.row>0) {
         
+        
         ISTableViewVideoCell* vCell=(ISTableViewVideoCell*)cell;
-        vCell.videoImage.image=[UIImage imageNamed:@"test.jpg"];
-        vCell.videoLable.text=@"котэ аспмриотльдлорпавпролодрпа";
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLRequest* request=[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:video.videoPreviewImage]];
+        
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                                       completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+        {
+            
+            vCell.videoImage.image=[UIImage imageWithData:data];
+            
+            
+        }];
+        [task resume];
+        
+        vCell.videoLable.text=video.videoName;
         vCell.timeVLable.text=@"01:45";
         
-        UIFont* timeFont=[UIFont fontWithName:@"HelveticaNeue-UltraLightItalic" size:14];
-        vCell.timeVLable.font=timeFont;
     }
     
     
@@ -124,8 +144,29 @@
         
     }
     
-    
     return 40;
+}
+
+#pragma mark-ISLoginDelegate
+
+- (void) didLogin:(ISLoginController*)vc token:(ISAccessToken*)token{
+    
+    [[ISServerManager sharedManager] setAccessToken:token];
+    [vc dismissViewControllerAnimated:YES
+                             completion:nil];
+    
+    [[ISServerManager sharedManager]getVideoFromString:@"100500" OnSuccess:^(NSArray *video) {
+        
+        self.videoAr=video;
+        [self.tableViwe reloadData];
+        
+        
+    } onFailure:^(NSError *error, NSInteger statusCode) {
+        
+        NSLog(@"error %@ statusCode=%ld",error.description,(long)statusCode);
+    }];
+    
+    
 }
 
 

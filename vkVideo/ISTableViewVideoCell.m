@@ -22,13 +22,23 @@
         
         CGRect lableR=CGRectMake(CGRectGetMaxX(self.videoImage.frame)+10, 0,
                                  CGRectGetMaxX(self.contentView.frame)-160, 60);
+        
+        
         self.videoLable=[[UILabel alloc]initWithFrame:lableR];
         [self.contentView addSubview:self.videoLable];
         
+        UIFont* nameVidFont=[UIFont systemFontOfSize:12];
+        self.videoLable.font=nameVidFont;
+        
+        
+        
         CGRect lableTimeR=CGRectMake(CGRectGetMaxX(self.videoLable.frame)+10, 0,
-                                 CGRectGetMaxX(self.contentView.frame)-10, 60);
+                                 CGRectGetMaxX(self.contentView.frame), 60);
         self.timeVLable=[[UILabel alloc]initWithFrame:lableTimeR];
         [self.contentView addSubview:self.timeVLable];
+        
+        UIFont* timeFont=[UIFont fontWithName:@"HelveticaNeue-UltraLightItalic" size:12];
+        self.timeVLable.font=timeFont;
         
         
     }

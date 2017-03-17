@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class ISAccessToken;
+
+@protocol ISLoginDelegate;
+
 @interface ISLoginController : UIViewController
+
+@property (weak, nonatomic) id <ISLoginDelegate> delegate;
+
+@end
+
+@protocol ISLoginDelegate
+
+- (void) didLogin:(ISLoginController*)vc token:(ISAccessToken*)token;
 
 @end

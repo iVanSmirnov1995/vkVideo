@@ -38,9 +38,10 @@
     @"https://oauth.vk.com/authorize?"
     "client_id=5929937&"
     "client_secret=8pN6fdrM5kOkp3BwWe5q&"
-    "grant_type=client_credentials"
+    "grant_type=client_credentials&"
+    "scope=139286&"
     "v=5.62&"
-    "response_type=token";
+    "response_type=token&";
     
     NSURL* url = [NSURL URLWithString:urlString];
     
@@ -115,17 +116,8 @@
     
         if (token.token) {
             
-            
             self.webView.delegate = nil;
-            
-            //            if (self.completionBlock) {
-            //                self.completionBlock(token);
-            //            }
-            
-            
-            
-            [self dismissViewControllerAnimated:YES
-                                     completion:nil];
+            [self.delegate didLogin:self token:token];
             
         }
         

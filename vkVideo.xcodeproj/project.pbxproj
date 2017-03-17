@@ -17,6 +17,7 @@
 		D30B79DF1E7BF9FE00E9D688 /* ISTableSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79DE1E7BF9FE00E9D688 /* ISTableSearchCell.m */; };
 		D30B79E21E7C024100E9D688 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D30B79E11E7C024100E9D688 /* test.jpg */; };
 		D30B79E51E7C3D2500E9D688 /* ISVkVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79E41E7C3D2500E9D688 /* ISVkVideoModel.m */; };
+		D30B79E91E7C3FA100E9D688 /* ISServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79E81E7C3FA100E9D688 /* ISServerManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		D30B79E11E7C024100E9D688 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = test.jpg; path = ../../../../Downloads/test.jpg; sourceTree = "<group>"; };
 		D30B79E31E7C3D2500E9D688 /* ISVkVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISVkVideoModel.h; sourceTree = "<group>"; };
 		D30B79E41E7C3D2500E9D688 /* ISVkVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISVkVideoModel.m; sourceTree = "<group>"; };
+		D30B79E71E7C3FA100E9D688 /* ISServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISServerManager.h; sourceTree = "<group>"; };
+		D30B79E81E7C3FA100E9D688 /* ISServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISServerManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 				D30B79BD1E7BD90400E9D688 /* AppDelegate.h */,
 				D30B79BE1E7BD90400E9D688 /* AppDelegate.m */,
 				D30B79E11E7C024100E9D688 /* test.jpg */,
+				D30B79E71E7C3FA100E9D688 /* ISServerManager.h */,
+				D30B79E81E7C3FA100E9D688 /* ISServerManager.m */,
 				D30B79E61E7C3D2B00E9D688 /* models */,
 				D30B79E01E7BFA0800E9D688 /* cells */,
 				D30B79C61E7BD90400E9D688 /* Assets.xcassets */,
@@ -193,6 +198,7 @@
 				D30B79DC1E7BF9BF00E9D688 /* ISTableViewVideoCell.m in Sources */,
 				D30B79BF1E7BD90400E9D688 /* AppDelegate.m in Sources */,
 				D30B79E51E7C3D2500E9D688 /* ISVkVideoModel.m in Sources */,
+				D30B79E91E7C3FA100E9D688 /* ISServerManager.m in Sources */,
 				D30B79D61E7BE55800E9D688 /* ISAccessToken.m in Sources */,
 				D30B79BC1E7BD90400E9D688 /* main.m in Sources */,
 				D30B79D31E7BDA7900E9D688 /* ISLoginController.m in Sources */,
