@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D30B79BC1E7BD90400E9D688 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79BB1E7BD90400E9D688 /* main.m */; };
 		D30B79BF1E7BD90400E9D688 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79BE1E7BD90400E9D688 /* AppDelegate.m */; };
-		D30B79C21E7BD90400E9D688 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79C11E7BD90400E9D688 /* ViewController.m */; };
 		D30B79C71E7BD90400E9D688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30B79C61E7BD90400E9D688 /* Assets.xcassets */; };
 		D30B79D31E7BDA7900E9D688 /* ISLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79D21E7BDA7900E9D688 /* ISLoginController.m */; };
 		D30B79D61E7BE55800E9D688 /* ISAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79D51E7BE55800E9D688 /* ISAccessToken.m */; };
@@ -25,8 +24,6 @@
 		D30B79BB1E7BD90400E9D688 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D30B79BD1E7BD90400E9D688 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D30B79BE1E7BD90400E9D688 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D30B79C01E7BD90400E9D688 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D30B79C11E7BD90400E9D688 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D30B79C61E7BD90400E9D688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D30B79CB1E7BD90400E9D688 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D30B79D11E7BDA7900E9D688 /* ISLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLoginController.h; sourceTree = "<group>"; };
@@ -82,8 +79,6 @@
 				D30B79D21E7BDA7900E9D688 /* ISLoginController.m */,
 				D30B79BD1E7BD90400E9D688 /* AppDelegate.h */,
 				D30B79BE1E7BD90400E9D688 /* AppDelegate.m */,
-				D30B79C01E7BD90400E9D688 /* ViewController.h */,
-				D30B79C11E7BD90400E9D688 /* ViewController.m */,
 				D30B79E11E7C024100E9D688 /* test.jpg */,
 				D30B79E61E7C3D2B00E9D688 /* models */,
 				D30B79E01E7BFA0800E9D688 /* cells */,
@@ -194,7 +189,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D30B79DF1E7BF9FE00E9D688 /* ISTableSearchCell.m in Sources */,
-				D30B79C21E7BD90400E9D688 /* ViewController.m in Sources */,
 				D30B79D91E7BE81A00E9D688 /* ISStartVC.m in Sources */,
 				D30B79DC1E7BF9BF00E9D688 /* ISTableViewVideoCell.m in Sources */,
 				D30B79BF1E7BD90400E9D688 /* AppDelegate.m in Sources */,

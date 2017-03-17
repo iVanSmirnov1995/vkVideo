@@ -6,8 +6,8 @@
 //  Copyright © 2017 Smirnov Ivan. All rights reserved.
 //
 
-#import "ViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface ISLoginController : ViewController
+@interface ISLoginController : UIViewController
 
 @end

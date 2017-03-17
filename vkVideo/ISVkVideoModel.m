@@ -10,4 +10,6 @@
 
 @implementation ISVkVideoModel
 
+
+
 @end
