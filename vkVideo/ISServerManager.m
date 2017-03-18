@@ -29,7 +29,7 @@
 }
 
 
--(void)getVideoFromString:(NSString*)string OnSuccess:(void(^)(NSArray* video)) success
+-(void)getVideoFromString:(NSString*)string offset:(NSInteger)offset OnSuccess:(void(^)(NSArray* video)) success
                 onFailure:(void(^)(NSError* error,NSInteger statusCode))failure{
     
   //  NSURLSession *session = [NSURLSession sharedSession];
@@ -38,13 +38,14 @@
      string,        @"q",
      @(2),          @"sort",
      @(40),        @"count",
+     @(offset),     @"offset",
      self.accessToken.token,@"access_token",
      @"5.62",@"v",nil];
     
     NSString* urlStr=@"https://api.vk.com/method/video.search?";
     
-    NSString* paramSt=[NSString stringWithFormat:@"count=%@&sort=%@&q=%@&access_token=%@&v=%@"
-            ,params[@"count"],params[@"sort"],params[@"q"],params[@"access_token"],params[@"v"]];
+    NSString* paramSt=[NSString stringWithFormat:@"count=%@&sort=%@&q=%@&offset=%@&access_token=%@&v=%@"
+            ,params[@"count"],params[@"sort"],params[@"q"],params[@"offset"],params[@"access_token"],params[@"v"]];
     
     NSString* finSt=[NSString stringWithFormat:@"%@%@",urlStr,paramSt];
     
@@ -66,7 +67,7 @@
                 ISVkVideoModel* vModel=[[ISVkVideoModel alloc]init];
                 vModel.videoName=d[@"title"];
                 vModel.videoURL=d[@"player"];
-                vModel.videoTime=d[@"duration"];
+                vModel.videoTime=[self timeStringFromSeconds:[d[@"duration"]doubleValue]];
                 vModel.videoPreviewImage=d[@"photo_130"];
                 [videoModArr addObject:vModel];
                 
@@ -101,6 +102,23 @@
     }
     return self;
 }
+
+
+#pragma mark-helpMetods
+
+-(NSString *)timeStringFromSeconds:(double)seconds
+{
+    NSDateComponentsFormatter *dcFormatter = [[NSDateComponentsFormatter alloc] init];
+    dcFormatter.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorPad;
+    if (seconds>3600) {
+        dcFormatter.allowedUnits = NSCalendarUnitHour | NSCalendarUnitMinute|NSCalendarUnitSecond;
+    }else
+        dcFormatter.allowedUnits = NSCalendarUnitMinute|NSCalendarUnitSecond;
+        
+    dcFormatter.unitsStyle = NSDateComponentsFormatterUnitsStylePositional;
+    return [dcFormatter stringFromTimeInterval:seconds];
+}
+
 
 
 @end

@@ -38,6 +38,7 @@
 
     // Configure the view for the selected state
 
+    NSLog(@"fhgjkl");
 }
 
 @end

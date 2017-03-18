@@ -13,10 +13,11 @@
 #import "ISServerManager.h"
 #import "ISVkVideoModel.h"
 
-@interface ISStartVC ()<UITableViewDataSource,UITableViewDelegate,ISLoginDelegate>
+@interface ISStartVC ()<UITableViewDataSource,UITableViewDelegate,ISLoginDelegate,UISearchBarDelegate>
 
-@property(strong,nonatomic)NSArray* videoAr;
+@property(strong,nonatomic)NSMutableArray* videoAr;
 @property(strong,nonatomic)UITableView* tableViwe;
+@property(strong,nonatomic)NSString* searchText;
 
 @end
 
@@ -33,6 +34,7 @@
         
     } ];
     
+    self.videoAr=[NSMutableArray array];
     UITableView* tableView=[[UITableView alloc]
                             initWithFrame:self.view.frame style:UITableViewStylePlain];
     
@@ -55,7 +57,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.videoAr.count;
+    return 1+self.videoAr.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -69,6 +71,8 @@
         
         if (!cell) {
             cell = [[ISTableSearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            
+            cell.bar.delegate=self;
         }
         
         
@@ -93,6 +97,12 @@
     }
 
     
+    
+    
+    
+    
+    
+    
     return nil;
 }
 
@@ -102,30 +112,40 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    ISVkVideoModel* video=self.videoAr[indexPath.row];
     
     if (indexPath.row>0) {
         
+         ISVkVideoModel* video=self.videoAr[indexPath.row-1];
         
         ISTableViewVideoCell* vCell=(ISTableViewVideoCell*)cell;
         
-        NSURLSession *session = [NSURLSession sharedSession];
-        NSURLRequest* request=[[NSURLRequest alloc]initWithURL:[NSURL URLWithString:video.videoPreviewImage]];
+        vCell.videoImage.image = [UIImage imageNamed:@"loading"];
         
-        NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-                                                       completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
-        {
-            
-            vCell.videoImage.image=[UIImage imageWithData:data];
-            
-            
+        NSURL *url = [NSURL URLWithString:video.videoPreviewImage];
+        
+        NSURLSessionTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            if (data) {
+                UIImage *image = [UIImage imageWithData:data];
+                if (image) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                    ISTableViewVideoCell *updateCell = (id)[tableView cellForRowAtIndexPath:indexPath];
+                        if (updateCell)
+                            updateCell.videoImage.image = image;
+                    });
+                }
+            }
         }];
         [task resume];
-        
         vCell.videoLable.text=video.videoName;
-        vCell.timeVLable.text=@"01:45";
+        vCell.timeVLable.text=video.videoTime;
         
     }
+    
+    if((indexPath.row  == self.videoAr.count)&&!(self.videoAr.count==0)&&(self.videoAr.count>39)) {
+        [self GETVideoFromServer];
+    }
+    
+    
     
     
 }
@@ -155,10 +175,25 @@
     [vc dismissViewControllerAnimated:YES
                              completion:nil];
     
-    [[ISServerManager sharedManager]getVideoFromString:@"100500" OnSuccess:^(NSArray *video) {
+    
+}
+
+#pragma mark-API
+
+-(void)GETVideoFromServer{
+    
+    [[ISServerManager sharedManager]getVideoFromString:self.searchText
+                                                offset:self.videoAr.count OnSuccess:^(NSArray *video) {
         
-        self.videoAr=video;
-        [self.tableViwe reloadData];
+        [self.videoAr addObjectsFromArray:video];
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.tableViwe reloadData];
+            
+        });
+        
         
         
     } onFailure:^(NSError *error, NSInteger statusCode) {
@@ -166,7 +201,17 @@
         NSLog(@"error %@ statusCode=%ld",error.description,(long)statusCode);
     }];
     
+}
+
+#pragma mark-UISearchBarDelegate
+
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     
+    [self.videoAr removeAllObjects];
+    
+    self.searchText=searchBar.text;
+    [self GETVideoFromServer];
 }
 
 

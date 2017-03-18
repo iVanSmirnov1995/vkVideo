@@ -8,6 +8,7 @@
 
 #import "ISTableViewVideoCell.h"
 
+
 @implementation ISTableViewVideoCell
 
 
@@ -57,8 +58,17 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-
 }
+
+
+//- (void)prepareForReuse{
+//    [super prepareForReuse];
+////    NSLog(@"тест");
+//    self.videoImage=nil;
+//    self.videoLable=nil;
+//    self.timeVLable=nil;
+//    
+//}
 
 
 @end

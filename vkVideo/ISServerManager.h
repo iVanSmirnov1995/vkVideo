@@ -20,7 +20,7 @@
 +(ISServerManager*) sharedManager;
 
 
--(void)getVideoFromString:(NSString*)string OnSuccess:(void(^)(NSArray* video)) success
+-(void)getVideoFromString:(NSString*)string offset:(NSInteger)offset OnSuccess:(void(^)(NSArray* video)) success
                  onFailure:(void(^)(NSError* error,NSInteger statusCode))failure;
 
 
