@@ -14,5 +14,8 @@
 @property(strong,nonatomic)NSString* videoPreviewImage;
 @property(strong,nonatomic)NSString* videoName;
 @property(strong,nonatomic)NSString* videoTime;
+@property(assign,nonatomic)NSInteger height;
+@property(assign,nonatomic)NSInteger width;
+@property(assign,nonatomic)bool isVK;
 
 @end

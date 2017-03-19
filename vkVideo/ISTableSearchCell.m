@@ -15,6 +15,8 @@
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
+        self.frame=CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44);
+        NSLog(@"%@",self);
         UISearchBar* bar=[[UISearchBar alloc]initWithFrame:self.frame];
         bar.searchBarStyle=UISearchBarStyleMinimal;
         self.bar=bar;
@@ -26,12 +28,12 @@
 }
 
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-    
-    
-}
+//- (void)awakeFromNib {
+//    [super awakeFromNib];
+//    // Initialization code
+//    
+//    
+//}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

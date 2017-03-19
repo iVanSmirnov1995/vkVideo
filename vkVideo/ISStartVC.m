@@ -12,6 +12,7 @@
 #import "ISTableViewVideoCell.h"
 #import "ISServerManager.h"
 #import "ISVkVideoModel.h"
+#import "ISPlayerVC.h"
 
 @interface ISStartVC ()<UITableViewDataSource,UITableViewDelegate,ISLoginDelegate,UISearchBarDelegate>
 
@@ -69,8 +70,10 @@
         
         ISTableSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         
+        
         if (!cell) {
             cell = [[ISTableSearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            NSLog(@"%@",cell);
             
             cell.bar.delegate=self;
         }
@@ -108,6 +111,25 @@
 
 
 #pragma mark-UITableViewDelegate
+
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.row>0) {
+     
+        ISVkVideoModel* video=self.videoAr[indexPath.row-1];
+        ISPlayerVC* vc=[[ISPlayerVC alloc]init];
+        vc.videoModel=video;
+        [self.navigationController pushViewController:vc animated:NO];
+        
+        
+        
+        
+    }
+    
+    
+    return YES;
+}
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{

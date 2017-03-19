@@ -18,6 +18,7 @@
 		D30B79E21E7C024100E9D688 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D30B79E11E7C024100E9D688 /* test.jpg */; };
 		D30B79E51E7C3D2500E9D688 /* ISVkVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79E41E7C3D2500E9D688 /* ISVkVideoModel.m */; };
 		D30B79E91E7C3FA100E9D688 /* ISServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D30B79E81E7C3FA100E9D688 /* ISServerManager.m */; };
+		D33BA31C1E7E648D00C6D57E /* ISPlayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D33BA31B1E7E648D00C6D57E /* ISPlayerVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		D30B79E41E7C3D2500E9D688 /* ISVkVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISVkVideoModel.m; sourceTree = "<group>"; };
 		D30B79E71E7C3FA100E9D688 /* ISServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISServerManager.h; sourceTree = "<group>"; };
 		D30B79E81E7C3FA100E9D688 /* ISServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISServerManager.m; sourceTree = "<group>"; };
+		D33BA31A1E7E648D00C6D57E /* ISPlayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISPlayerVC.h; sourceTree = "<group>"; };
+		D33BA31B1E7E648D00C6D57E /* ISPlayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISPlayerVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,8 @@
 		D30B79B91E7BD90400E9D688 /* vkVideo */ = {
 			isa = PBXGroup;
 			children = (
+				D33BA31A1E7E648D00C6D57E /* ISPlayerVC.h */,
+				D33BA31B1E7E648D00C6D57E /* ISPlayerVC.m */,
 				D30B79D71E7BE81A00E9D688 /* ISStartVC.h */,
 				D30B79D81E7BE81A00E9D688 /* ISStartVC.m */,
 				D30B79D41E7BE55800E9D688 /* ISAccessToken.h */,
@@ -202,6 +207,7 @@
 				D30B79D61E7BE55800E9D688 /* ISAccessToken.m in Sources */,
 				D30B79BC1E7BD90400E9D688 /* main.m in Sources */,
 				D30B79D31E7BDA7900E9D688 /* ISLoginController.m in Sources */,
+				D33BA31C1E7E648D00C6D57E /* ISPlayerVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +312,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = IS.com.vkVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -319,6 +326,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = IS.com.vkVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -341,6 +349,7 @@
 				D30B79D01E7BD90400E9D688 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

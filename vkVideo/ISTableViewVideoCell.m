@@ -17,6 +17,7 @@
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
+        self.frame=CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44);
         CGRect r=CGRectMake(10, 0, 60, 60);
         self.videoImage=[[UIImageView alloc]initWithFrame:r];
         [self.contentView addSubview:self.videoImage];
@@ -33,7 +34,7 @@
         
         
         
-        CGRect lableTimeR=CGRectMake(CGRectGetMaxX(self.videoLable.frame)+10, 0,
+        CGRect lableTimeR=CGRectMake(CGRectGetMaxX([UIScreen mainScreen].bounds)-10-60, 0,
                                  CGRectGetMaxX(self.contentView.frame), 60);
         self.timeVLable=[[UILabel alloc]initWithFrame:lableTimeR];
         [self.contentView addSubview:self.timeVLable];

@@ -39,7 +39,7 @@
     "client_id=5929937&"
     "client_secret=8pN6fdrM5kOkp3BwWe5q&"
     "grant_type=client_credentials&"
-    "scope=139286&"
+    "scope=16&"
     "v=5.62&"
     "response_type=token&";
     
