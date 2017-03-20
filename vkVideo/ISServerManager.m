@@ -32,21 +32,20 @@
 -(void)getVideoFromString:(NSString*)string offset:(NSInteger)offset OnSuccess:(void(^)(NSArray* video)) success
                 onFailure:(void(^)(NSError* error,NSInteger statusCode))failure{
     
-  //  NSURLSession *session = [NSURLSession sharedSession];
     NSDictionary* params =
     [NSDictionary dictionaryWithObjectsAndKeys:
      string,        @"q",
      @(2),          @"sort",
      @(40),        @"count",
      @(offset),     @"offset",
-     @"",           @"User-Agent",
+     @"",           @"filters",
      self.accessToken.token,@"access_token",
      @"5.62",@"v",nil];
     
     NSString* urlStr=@"https://api.vk.com/method/video.search?";
     
-    NSString* paramSt=[NSString stringWithFormat:@"adult=0&count=%@&sort=%@&q=%@&offset=%@&User-Agent=%@&access_token=%@&v=%@"
-            ,params[@"count"],params[@"sort"],params[@"q"],params[@"offset"],params[@"User-Agent"],params[@"access_token"],params[@"v"]];
+    NSString* paramSt=[NSString stringWithFormat:@"adult=0&count=%@&sort=%@&q=%@&offset=%@&filters=%@&access_token=%@&v=%@"
+            ,params[@"count"],params[@"sort"],params[@"q"],params[@"offset"],params[@"filters"],params[@"access_token"],params[@"v"]];
     
     NSString* finSt=[NSString stringWithFormat:@"%@%@",urlStr,paramSt];
     
@@ -58,7 +57,7 @@
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url
                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                 NSDictionary * json  = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                NSLog(@"%@",json);
+                //NSLog(@"%@",json);
                 NSDictionary* d=json[@"response"];
                 NSArray* ar=d[@"items"];
                 NSMutableArray* videoModArr=[NSMutableArray array];
@@ -72,7 +71,7 @@
                 vModel.videoPreviewImage=d[@"photo_130"];
                 vModel.height=[d[@"height"] integerValue];
                 vModel.width=[d[@"width"] integerValue];
-                if (!(vModel.height==0)) {
+                if (d[@"height"]) {
                     vModel.isVK=YES;
                 }else vModel.isVK=NO;
                 
@@ -138,7 +137,7 @@
     NSURLSessionDataTask *dataTask = [session dataTaskWithURL:baseUrl
                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSString *s = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-                                            
+                                                
                                                 
         NSDataDetector *detect = [[NSDataDetector alloc]
                                   initWithTypes:NSTextCheckingTypeLink error:nil];
@@ -178,8 +177,6 @@
                                                     
                     }
                                                 
-                                                
-                                                    //https// 720.mp4
                                                 
                                                 
                                                 

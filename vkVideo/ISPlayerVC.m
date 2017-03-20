@@ -21,6 +21,14 @@
 
 @implementation ISPlayerVC
 
+-(void)loadView{
+    
+    [super loadView];
+    self.view.backgroundColor=[UIColor whiteColor];
+    NSLog(@"%@",self.view.backgroundColor);
+    
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,12 +76,6 @@
 
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 -(void)addPlayer:(NSURL*)url{
     
     
@@ -95,7 +97,6 @@
     playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     [superlayer addSublayer:playerLayer];
     
-//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(playerDidFinishPlaying:) name:AVPlayerItemDidPlayToEndTimeNotification object:item];
     
     
     [player seekToTime:kCMTimeZero];
@@ -107,8 +108,8 @@
     CGRect playR=CGRectMake(50, CGRectGetMaxY(viewFr)+50, 50, 50);
     UIButton* play=[[UIButton alloc]initWithFrame:playR];
     
-    [stop addTarget:self action:@selector(stopAction:) forControlEvents:UIControlEventTouchDown];
-    [play addTarget:self action:@selector(playAction:) forControlEvents:UIControlEventTouchDown];
+    [stop addTarget:self action:@selector(stopAction:) forControlEvents:UIControlEventTouchUpInside];
+    [play addTarget:self action:@selector(playAction:) forControlEvents:UIControlEventTouchUpInside];
     [stop setImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
     [play setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
     self.play=play;
@@ -126,7 +127,6 @@
                                  (3.f/4.f)*CGRectGetWidth(self.view.frame));
     
      UIWebView* wv=[[UIWebView alloc]initWithFrame:viewFr];
-     // wv.center=self.view.center;
         [self.view addSubview:wv];
         NSString* urlString =self.videoModel.videoURL;
         NSURL* url = [NSURL URLWithString:urlString];
@@ -167,17 +167,6 @@
     }
 }
 
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 
 @end

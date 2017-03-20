@@ -17,13 +17,17 @@
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.frame=CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44);
-        CGRect r=CGRectMake(10, 0, 60, 60);
+        self.frame=CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 80);
+        CGRect r=CGRectMake(10, 0, CGRectGetHeight(self.frame), CGRectGetHeight(self.frame));
         self.videoImage=[[UIImageView alloc]initWithFrame:r];
         [self.contentView addSubview:self.videoImage];
         
+        CGRect lableTimeR=CGRectMake(CGRectGetMaxX([UIScreen mainScreen].bounds)-40, 0,
+                                     30,
+                                     CGRectGetHeight(self.frame));
+        
         CGRect lableR=CGRectMake(CGRectGetMaxX(self.videoImage.frame)+10, 0,
-                                 CGRectGetMaxX(self.contentView.frame)-160, 60);
+                        CGRectGetMinX(lableTimeR)-(CGRectGetMaxX(self.videoImage.frame)+20),CGRectGetHeight(self.frame));
         
         
         self.videoLable=[[UILabel alloc]initWithFrame:lableR];
@@ -34,13 +38,13 @@
         
         
         
-        CGRect lableTimeR=CGRectMake(CGRectGetMaxX([UIScreen mainScreen].bounds)-10-60, 0,
-                                 CGRectGetMaxX(self.contentView.frame), 60);
         self.timeVLable=[[UILabel alloc]initWithFrame:lableTimeR];
         [self.contentView addSubview:self.timeVLable];
         
         UIFont* timeFont=[UIFont fontWithName:@"HelveticaNeue-UltraLightItalic" size:12];
         self.timeVLable.font=timeFont;
+      //  self.timeVLable.textAlignment=NSTextAlignmentRight;
+        
         
         
     }
@@ -61,15 +65,6 @@
 
 }
 
-
-//- (void)prepareForReuse{
-//    [super prepareForReuse];
-////    NSLog(@"тест");
-//    self.videoImage=nil;
-//    self.videoLable=nil;
-//    self.timeVLable=nil;
-//    
-//}
 
 
 @end

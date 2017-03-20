@@ -17,16 +17,18 @@
 @interface ISStartVC ()<UITableViewDataSource,UITableViewDelegate,ISLoginDelegate,UISearchBarDelegate>
 
 @property(strong,nonatomic)NSMutableArray* videoAr;
-@property(strong,nonatomic)UITableView* tableViwe;
+@property(weak,nonatomic)UITableView* tableViwe;
 @property(strong,nonatomic)NSString* searchText;
 
 @end
 
 @implementation ISStartVC
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[self.navigationController.viewControllers objectAtIndex:0] setTitle:@"Поиск по видео"];
     ISLoginController* vc=[[ISLoginController alloc]init];
     vc.delegate=self;
     vc.modalPresentationStyle=UIModalPresentationPageSheet;
@@ -48,10 +50,6 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark-UITableViewDataSource
 
@@ -100,12 +98,6 @@
     }
 
     
-    
-    
-    
-    
-    
-    
     return nil;
 }
 
@@ -113,27 +105,26 @@
 #pragma mark-UITableViewDelegate
 
 
-- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath{
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.row>0) {
      
         ISVkVideoModel* video=self.videoAr[indexPath.row-1];
         ISPlayerVC* vc=[[ISPlayerVC alloc]init];
         vc.videoModel=video;
-        [self.navigationController pushViewController:vc animated:NO];
-        
+        [self.navigationController pushViewController:vc animated:YES];
+        UITableViewCell* cel=[tableView cellForRowAtIndexPath:indexPath];
+        cel.selectionStyle=UITableViewCellSelectionStyleNone;
         
         
         
     }
     
-    
-    return YES;
 }
 
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     
     if (indexPath.row>0) {
         
@@ -182,7 +173,7 @@
     
     if (indexPath.row>0) {
         
-        return 60;
+        return 80;
         
     }
     
